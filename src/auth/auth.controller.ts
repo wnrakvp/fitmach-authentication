@@ -32,7 +32,7 @@ export class AuthController {
 
   @Post('logout')
   @HttpCode(HttpStatus.OK)
-  logout(@GetCurrentUserId() userId: number) {
+  logout(@GetCurrentUserId() userId: string) {
     return this.authService.logout(userId);
   }
 
@@ -41,7 +41,7 @@ export class AuthController {
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   refreshToken(
-    @GetCurrentUserId() userId: number,
+    @GetCurrentUserId() userId: string,
     @GetCurrentUser('refreshToken') refreshToken: string,
   ) {
     return this.authService.refreshToken(userId, refreshToken);
