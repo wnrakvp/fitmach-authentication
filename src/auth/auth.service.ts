@@ -48,9 +48,9 @@ export class AuthService {
         hashedRt: null,
       },
     });
-    // return user;
+    return {};
   }
-  async refreshToken(userId: string, rt: string) {
+  async refreshToken(userId: string, rt: string): Promise<Tokens> {
     const user = await this.prisma.user.findUnique({
       where: {
         id: userId,
